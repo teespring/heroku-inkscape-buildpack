@@ -2,13 +2,17 @@
 BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 INKSCAPE_PACKAGE_NAME="inkscape_0.91.0+47~ubuntu14.10.1"
+INKSCAPE_FOLDER="$BUILD_DIR/.inkscape/inkscape-0.91.0+47~ubuntu14.10.1"
 INKSCAPE_PACKAGE_URL="https://launchpad.net/~inkscape.dev/+archive/ubuntu/stable/+files/$INKSCAPE_PACKAGE_NAME.tar.xz"
 
 # inkscape
 mkdir -p "$BUILD_DIR/.inkscape/"
 cd "$BUILD_DIR/.inkscape/"
-wget $INKSCAPE_PACKAGE_URL
+#wget $INKSCAPE_PACKAGE_URL
+pwd
+ls /tmp/.inkscape
 tar -xf $INKSCAPE_PACKAGE_NAME.tar.xz
-cd $INKSCAPE_PACKAGE_NAME
+cd "$INKSCAPE_FOLDER"
+pwd
 ./configure
 make
