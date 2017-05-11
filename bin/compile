@@ -1,18 +1,46 @@
 #!/usr/bin/env bash
 BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
-INKSCAPE_PACKAGE_NAME="inkscape_0.91.0+47~ubuntu14.10.1"
-INKSCAPE_FOLDER="$BUILD_DIR/.inkscape/inkscape-0.91.0+47~ubuntu14.10.1"
-INKSCAPE_PACKAGE_URL="https://launchpad.net/~inkscape.dev/+archive/ubuntu/stable/+files/$INKSCAPE_PACKAGE_NAME.tar.xz"
+
+# Perl XML::Parser
+# XML_PARSER_NAME="XML-Parser-2.44"
+# XML_PARSER_ZIP_FILE="$XML_PARSER_NAME.tar.gz"
+# XML_PARSER_URL="http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/$XML_PARSER_ZIP_FILE"
+# XML_PARSER_FOLDER=$XML_PARSER_NAME
+# mkdir -p "$BUILD_DIR/.xml-parser/"
+# cd "$BUILD_DIR/.xml-parser/"
+# wget $XML_PARSER_URL
+# tar -xvf $XML_PARSER_ZIP_FILE
+# cd $XML_PARSER_FOLDER
+# perl Makefile.PL
+# make
+# make test
+# make install
+
+# intltool
+INTLTOOL_PACKAGE_NAME="intltool-0.50.2"
+INTLTOOL_PACKAGE_ZIP_FILE="$INTLTOOL_PACKAGE_NAME.tar.gz"
+INTLTOOL_PACKAGE_URL="http://launchpad.net/intltool/trunk/0.50.2/+download/$INTLTOOL_PACKAGE_ZIP_FILE"
+INTLTOOL_FOLDER="$BUILD_DIR/.intltool/$INTLTOOL_PACKAGE_NAME"
+mkdir -p "$BUILD_DIR/.intltool"
+cd "$BUILD_DIR/.intltool"
+wget $INTLTOOL_PACKAGE_URL
+tar -xvf $INTLTOOL_PACKAGE_ZIP_FILE
+cd $INTLTOOL_FOLDER
+./configure
+make
 
 # inkscape
+INKSCAPE_PACKAGE_NAME="inkscape_0.91.0+47~ubuntu14.10.1"
+INKSCAPE_PACKAGE_ZIP_FILE="$INKSCAPE_PACKAGE_NAME.tar.xz"
+INKSCAPE_PACKAGE_URL="https://launchpad.net/~inkscape.dev/+archive/ubuntu/stable/+files/$INKSCAPE_PACKAGE_ZIP_FILE"
+INKSCAPE_FOLDER="$BUILD_DIR/.inkscape/inkscape-0.91.0+47~ubuntu14.10.1"
+
 mkdir -p "$BUILD_DIR/.inkscape/"
 cd "$BUILD_DIR/.inkscape/"
-#wget $INKSCAPE_PACKAGE_URL
-pwd
-ls /tmp/.inkscape
-tar -xf $INKSCAPE_PACKAGE_NAME.tar.xz
-cd "$INKSCAPE_FOLDER"
+wget $INKSCAPE_PACKAGE_URL
+tar -xf $INKSCAPE_PACKAGE_ZIP_FILE
+cd $INKSCAPE_FOLDER
 pwd
 ./configure
 make
